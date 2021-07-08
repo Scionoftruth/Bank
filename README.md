@@ -1,2 +1,2 @@
-# Project0
-Project 0 for Java w/ micrservices
+# Bank App
+Bank App for Java w/ micrservices
