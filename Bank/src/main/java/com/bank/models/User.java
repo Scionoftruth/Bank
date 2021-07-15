@@ -1,39 +1,53 @@
 package com.bank.models;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 //import com.bank.models.AccessLevel;
 
-public class User implements Serializable{
+public class User{
 
-	private static final long serialVersionUID = 1L;
-	
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String username;
 	private String password;
+	private String email;
 	private String access;
+	private List<Account> accounts;
 	//private AccessLevel access;
 	
 	public User() {
-		super();
+		accounts = new ArrayList<Account>();
 	}
 	
-	/*public User(String firstName, String lastName, String username, String password) {
-		super();
+	public User(int id, String firstName, String lastName, String username, String email, String password, String Access/*AccessLevel access*/) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
+		this.email = email;
 		this.password = password;
 		this.access = "";
-	}*/
+		this.accounts = new ArrayList<Account>();
+	}
 	
-	public User(String firstName, String lastName, String username, String password, String Access/*AccessLevel access*/) {
-		super();
+	public User(String firstName, String lastName, String username, String email, String password, String Access/*AccessLevel access*/) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
+		this.email = email;
 		this.password = password;
 		this.access = "";
+		this.accounts = new ArrayList<Account>();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -52,6 +66,14 @@ public class User implements Serializable{
 		this.lastName = lastName;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -60,29 +82,35 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
-	
-	public void setAccess(String access) {
-		this.access = access;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
+
 	public String getAccess() {
 		return access;
 	}
 
+	public void setAccess(String access) {
+		this.access = access;
+	}
+
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+
 	@Override
 	public String toString() {
-		return "User [firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password="
-				+ password + ", access=" + access + "]";
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
+				+ ", password=" + password + ", email=" + email + ", access=" + access + ", accounts=" + accounts + "]";
 	}
 	
-	/*
-	@Override
-	public String toString() {
-		return "User [firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password="
-				+ password + "]";
-	}*/
-	
+
 }

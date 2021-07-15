@@ -10,12 +10,12 @@ import com.bank.services.UserService;
 
 public class BankDriver {
 	
-	private static UserService uServ  = new UserService("users.txt");
+	//private static UserService uServ  = new UserService("users.txt");
 	
 	private static AccountService aServ = new AccountService("accounts.txt");
 
 	public static void main(String[] args) {
-		
+		/*
 		Scanner in = new Scanner(System.in);
 		
 		boolean done = false;
@@ -142,7 +142,7 @@ public class BankDriver {
 				  								break;
 				  							}
 				  							case 3:{
-				  								//Transfer
+				  								//Offer Transfer
 				  								
 				  								break;
 				  							}
@@ -168,7 +168,7 @@ public class BankDriver {
 			}
 		}
 		System.out.println("Thank You For Choosing Bank");
-		in.close();
+		in.close();*/
 	}
 
 }

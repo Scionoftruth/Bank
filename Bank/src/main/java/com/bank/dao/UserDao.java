@@ -1,10 +1,19 @@
 package com.bank.dao;
 
+import java.util.List;
+
 import com.bank.models.User;
 
 public interface UserDao {
 	
+	List<User> getAllUsers();
+	
 	User getUserByUsername(String username);
-	User addUser(User u);
+	
+	void createUser(User u);
+	
+	void updateUser(User u);
+	
+	void deleteUser(User u);
 
 }

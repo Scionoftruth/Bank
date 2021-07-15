@@ -9,11 +9,12 @@ public class UserDaoMock implements UserDao{
 	
 	private List<User> users = new ArrayList<User>();
 	
+	/*
 	public UserDaoMock() {
 		users.add(new User("Summer", "Smith", "ssmith","ssumertime","customer"));
 		users.add(new User("Jerry","Smith","jsmith","jsmith","customer"));
 		users.add(new User("Rick","Sanchez","picklerick","ricketyrick","customer"));
-	}
+	}*/
 
 	@Override
 	public User getUserByUsername(String username) {
@@ -27,9 +28,27 @@ public class UserDaoMock implements UserDao{
 	}
 
 	@Override
-	public User addUser(User u) {
-		users.add(u);
-		return u;
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void createUser(User u) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateUser(User u) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteUser(User u) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

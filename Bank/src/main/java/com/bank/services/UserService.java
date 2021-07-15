@@ -11,9 +11,8 @@ import com.bank.exceptions.UserDoesNotExistException;
 import com.bank.exceptions.UsernameAlreadyExistsException;
 import com.bank.dao.FileIO;
 
-
 public class UserService {
-	
+	/*
 	@SuppressWarnings("unused")
 	private String file;
 	private FileIO<User> io;
@@ -23,7 +22,7 @@ public class UserService {
 		this.io = new FileIO<User>(file);
 	}
 	
-	public User signUp(String firstName, String lastName, String username, String password, String access/*AccessLevel access*/) {
+	public User signUp(String firstName, String lastName, String username, String password, String accessAccessLevel access) {
 		ArrayList<User> users;
 		
 		try {
@@ -83,6 +82,6 @@ public class UserService {
 			users = new ArrayList<User>();
 		}
 		return users;
-	}
+	}*/
 
 }

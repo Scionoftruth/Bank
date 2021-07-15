@@ -2,6 +2,7 @@ package com.bank.models;
 
 public class Account {
 	
+	//private String accountnum;
 	private String username;
 	private int balance;
 	
@@ -9,7 +10,8 @@ public class Account {
 		
 	}
 	
-	public Account(String username, int balance) {
+	public Account(/*String accountnum,*/ String username, int balance) {
+		//this.accountnum=accountnum;
 		this.username = username;
 		this.balance=balance;
 	}
