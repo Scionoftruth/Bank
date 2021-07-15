@@ -1,6 +1,10 @@
 import java.util.List;
 import java.util.Scanner;
 
+import com.bank.dao.AccountDao;
+import com.bank.dao.AccountDaoDB;
+import com.bank.dao.UserDao;
+import com.bank.dao.UserDaoDB;
 import com.bank.exceptions.AccountDoesNotExistException;
 import com.bank.models.Account;
 import com.bank.models.User;
@@ -10,11 +14,14 @@ import com.bank.services.UserService;
 
 public class BankDriver {
 	
-	//private static UserService uServ  = new UserService("users.txt");
-	
-	private static AccountService aServ = new AccountService("accounts.txt");
 
 	public static void main(String[] args) {
+		
+		UserDao uDao = new UserDaoDB();
+		AccountDao aDao = new AccountDaoDB();
+		UserService uServ = new UserService(uDao);
+		AccountService pServ = new AccountService(aDao);
+		
 		/*
 		Scanner in = new Scanner(System.in);
 		
@@ -44,11 +51,13 @@ public class BankDriver {
 					String last = in.nextLine();
 					System.out.print("Please Enter Your Username");
 					String username = in.nextLine();
+					System.out.print("Please Enter Your Email");
+					String email = in.nextLine();
 					System.out.print("Please Enter a Password");
 					String password = in.nextLine();
 					//AccessLevel access = CUSTOMER;
 					try {
-						u = uServ.signUp(first, last, username, password, "customer");
+						u = uServ.signUp(first, last, username, email, password, "customer");
 						
 						System.out.println("You May Now Login With the Username: " + u.getUsername());
 					}catch(Exception e) {

@@ -3,17 +3,39 @@ package com.bank.models;
 public class Account {
 	
 	//private String accountnum;
-	private String username;
+	private int accountId;
+	private int userId;
 	private int balance;
 	
 	public Account() {
 		
 	}
 	
-	public Account(/*String accountnum,*/ String username, int balance) {
-		//this.accountnum=accountnum;
-		this.username = username;
+	public Account(int accountId, int userId, int balance) {
+		this.accountId = accountId;
+		this.userId = userId;
 		this.balance=balance;
+	}
+	
+	public Account(int userId, int balance) {
+		this.userId = userId;
+		this.balance = balance;
+	}
+
+	public int getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public int getBalance() {
@@ -24,13 +46,9 @@ public class Account {
 		this.balance = balance;
 	}
 
-	public String getUser() {
-		return username;
-	}
-
 	@Override
 	public String toString() {
-		return "Account [username=" + username + ", balance= $" + balance + "]";
+		return "Account [accountId=" + accountId + ", userId=" + userId + ", balance=" + balance + "]";
 	}
-
+	
 }

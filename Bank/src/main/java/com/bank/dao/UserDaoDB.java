@@ -1,6 +1,7 @@
 package com.bank.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,7 +29,7 @@ public class UserDaoDB implements UserDao{
 			ResultSet rs = s.executeQuery(sql);
 			
 			while(rs.next()) {
-				userList.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+				userList.add(new User(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(3), rs.getString(5), rs.getString(6), rs.getString(7)));
 			}
 			
 			return userList;
@@ -71,15 +72,45 @@ User user = new User();
 	}
 
 	@Override
-	public void createUser(User u) {
-		// TODO Auto-generated method stub
-		
+	public void createUser(User u) throws SQLException{
+
+			Connection con = conUtil.getConnection();
+			String sql = "INSERT INTO users(first_name, last_name, email, username, password, access) VALUES"
+					+"(?,?,?,?,?,?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, u.getFirstName());
+			ps.setString(2, u.getLastName());
+			ps.setString(3, u.getEmail());
+			ps.setString(4, u.getUsername());
+			ps.setString(5, u.getPassword());
+			ps.setString(6, u.getAccess());
+			
+			ps.execute();	
+	
 	}
 
 	@Override
 	public void updateUser(User u) {
-		// TODO Auto-generated method stub
-		
+		try {
+			Connection con = conUtil.getConnection();
+			String sql = "UPDATE users SET first_name = ?, last_name = ?, email = ?, username = ?, password = ?, access = ?"
+					+" WHERE users.id = ?";
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, u.getFirstName());
+			ps.setString(2, u.getLastName());
+			ps.setString(3, u.getEmail());
+			ps.setString(4, u.getUsername());
+			ps.setString(5, u.getPassword());
+			ps.setString(6, u.getAccess());
+			ps.setInt(7, u.getId());
+			
+			ps.execute();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+			
 	}
 
 	@Override
