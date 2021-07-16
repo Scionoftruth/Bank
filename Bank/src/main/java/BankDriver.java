@@ -6,7 +6,8 @@ import com.bank.dao.AccountDaoDB;
 import com.bank.dao.UserDao;
 import com.bank.dao.UserDaoDB;
 import com.bank.exceptions.AccountDoesNotExistException;
-import com.bank.models.Account;
+//import com.bank.models.Account;
+import com.bank.models.AccountDisplay;
 import com.bank.models.User;
 import com.bank.services.AccountService;
 //import com.bank.models.AccessLevel;
@@ -14,15 +15,13 @@ import com.bank.services.UserService;
 
 public class BankDriver {
 	
+	private static UserDao uDao = new UserDaoDB();
+	private static AccountDao aDao = new AccountDaoDB();
+	private static UserService uServ = new UserService(uDao);
+	private static AccountService aServ = new AccountService(aDao);
 
 	public static void main(String[] args) {
 		
-		UserDao uDao = new UserDaoDB();
-		AccountDao aDao = new AccountDaoDB();
-		UserService uServ = new UserService(uDao);
-		AccountService pServ = new AccountService(aDao);
-		
-		/*
 		Scanner in = new Scanner(System.in);
 		
 		boolean done = false;
@@ -31,6 +30,7 @@ public class BankDriver {
 		
 		while(!done) {
 			if(u==null) {
+				System.out.println("Welcome To The Bank");
 				System.out.println("Login or Signup? Press 1 to Login");
 				int choice = Integer.parseInt(in.nextLine());
 				if(choice == 1) {
@@ -39,7 +39,7 @@ public class BankDriver {
 					System.out.println("Please Enter Your Password: ");
 					String password = in.nextLine();
 					try {
-						u = uServ.login(username, password);
+						u = uServ.signIn(username, password);
 					}catch(Exception e) {
 						System.out.println("Username or Password Was Incorrect. Goodbye");
 						done = true;
@@ -80,11 +80,11 @@ public class BankDriver {
 				  					System.out.println("Please Enter Customer Username");
 				  					System.out.print("Username: ");
 				  					String cust = in.nextLine();
-				  					List<Account> eaccounts = aServ.getAllAccounts();
-				  					for(Account eaccount : eaccounts) {
-				  						if(!eaccount.getUser().contains(cust)) {
+				  					List<AccountDisplay> eaccounts = aServ.getAllAccounts();
+				  					for(AccountDisplay eaccount : eaccounts) {
+				  						if(!eaccount.getUsername().contains(cust)) {
 				  							throw new AccountDoesNotExistException();
-				  						}else if(eaccount.getUser().equals(cust)){
+				  						}else if(eaccount.getUsername().equals(cust)){
 				  							System.out.println(eaccount.toString());
 				  						}
 				  					}
@@ -112,23 +112,22 @@ public class BankDriver {
 				  		System.out.println("To View Account Press 1, To Exit Press 2");
 				  		int choice = Integer.parseInt(in.nextLine());
 				  		if(choice==1){
-				  			List<Account> accounts = aServ.getAllAccounts();
-				  			for(Account account: accounts) {
-				  				if(!account.getUser().contains(u.getUsername())) {
+				  			List<AccountDisplay> accounts = aServ.getAllAccounts();
+				  			for(AccountDisplay account: accounts) {
+				  				if(!account.getUsername().contains(u.getUsername())) {
 				  					System.out.println("It Seems Like You Do Not Have An Account With Us");
 				  					System.out.println("To Create An Account Press 1, To Exit Press 2");
 				  					if(choice==1) {
 				  						System.out.println("Thank You "+ u.getUsername()+" For Creating An Account");
 				  						System.out.print("What Would Your Starting Balance Be: ");
 				  						int balance = Integer.parseInt(in.nextLine());
-				  						Account a = new Account(u.getUsername(), balance);
-				  						aServ.addAccount(a);
+				  						aServ.addAccount(u.getId(), balance);
 				  						System.out.println("Congratulations "+u.getUsername()+" Your Account Was Created!");
 				  						System.out.println("Are You Finished? Press 1 for Yes, Press 2 for No");
 				  						choice = Integer.parseInt(in.nextLine());
 				  						done = (choice == 1) ? true : false;
 				  					}
-				  				}else if(account.getUser().equals(u.getUsername())){
+				  				}else if(account.getUsername().equals(u.getUsername())){
 				  					System.out.println(account.toString());
 							
 				  					int select = Integer.parseInt(in.nextLine());
@@ -177,7 +176,7 @@ public class BankDriver {
 			}
 		}
 		System.out.println("Thank You For Choosing Bank");
-		in.close();*/
+		in.close();
 	}
 
 }

@@ -1,9 +1,9 @@
 package com.bank.services;
 
-import java.io.FileNotFoundException;
+//import java.io.FileNotFoundException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import com.bank.models.User;
 import com.bank.dao.UserDao;
@@ -12,7 +12,7 @@ import com.bank.logging.Logging;
 //import com.bank.models.AccessLevel;
 import com.bank.exceptions.InvalidCredentialsException;
 import com.bank.exceptions.UserDoesNotExistException;
-import com.bank.exceptions.UsernameAlreadyExistsException;
+//import com.bank.exceptions.UsernameAlreadyExistsException;
 
 public class UserService {
 	

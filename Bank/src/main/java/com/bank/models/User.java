@@ -21,24 +21,24 @@ public class User{
 		accounts = new ArrayList<Account>();
 	}
 	
-	public User(int id, String firstName, String lastName, String username, String email, String password, String Access/*AccessLevel access*/) {
+	public User(int id, String firstName, String lastName, String username, String email, String password, String access) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.access = "";
+		this.access = access;
 		this.accounts = new ArrayList<Account>();
 	}
 	
-	public User(String firstName, String lastName, String username, String email, String password, String Access/*AccessLevel access*/) {
+	public User(String firstName, String lastName, String username, String email, String password, String access) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.access = "";
+		this.access = access;
 		this.accounts = new ArrayList<Account>();
 	}
 

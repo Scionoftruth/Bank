@@ -43,7 +43,7 @@ public class UserDaoDB implements UserDao{
 
 	@Override
 	public User getUserByUsername(String username) {
-User user = new User();
+		User user = new User();
 		
 		try {
 			Connection con = conUtil.getConnection();
@@ -75,7 +75,7 @@ User user = new User();
 	public void createUser(User u) throws SQLException{
 
 			Connection con = conUtil.getConnection();
-			String sql = "INSERT INTO users(first_name, last_name, email, username, password, access) VALUES"
+			String sql = "INSERT INTO users(first_name, last_name, email, username, password, accesslevel) VALUES"
 					+"(?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, u.getFirstName());
@@ -93,7 +93,7 @@ User user = new User();
 	public void updateUser(User u) {
 		try {
 			Connection con = conUtil.getConnection();
-			String sql = "UPDATE users SET first_name = ?, last_name = ?, email = ?, username = ?, password = ?, access = ?"
+			String sql = "UPDATE users SET first_name = ?, last_name = ?, email = ?, username = ?, password = ?, accesslevel = ?"
 					+" WHERE users.id = ?";
 			
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -115,7 +115,18 @@ User user = new User();
 
 	@Override
 	public void deleteUser(User u) {
-		// TODO Auto-generated method stub
+		try {
+			
+			Connection con = conUtil.getConnection();
+			String sql = "DELETE FROM users WHERE users.id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, u.getId());
+			
+			ps.execute();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 }
