@@ -3,13 +3,17 @@ import java.util.Scanner;
 
 import com.bank.dao.AccountDao;
 import com.bank.dao.AccountDaoDB;
+import com.bank.dao.TransactionDao;
+import com.bank.dao.TransactionDaoDB;
 import com.bank.dao.UserDao;
 import com.bank.dao.UserDaoDB;
 import com.bank.exceptions.AccountDoesNotExistException;
+import com.bank.models.Account;
 //import com.bank.models.Account;
 import com.bank.models.AccountDisplay;
 import com.bank.models.User;
 import com.bank.services.AccountService;
+import com.bank.services.TransactionService;
 //import com.bank.models.AccessLevel;
 import com.bank.services.UserService;
 
@@ -17,12 +21,13 @@ public class BankDriver {
 	
 	private static UserDao uDao = new UserDaoDB();
 	private static AccountDao aDao = new AccountDaoDB();
+	private static TransactionDao tDao = new TransactionDaoDB();
 	private static UserService uServ = new UserService(uDao);
 	private static AccountService aServ = new AccountService(aDao);
+	private static TransactionService tServ = new TransactionService(tDao);
+	public static Scanner in = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		
-		Scanner in = new Scanner(System.in);
 		
 		boolean done = false;
 		
@@ -129,6 +134,8 @@ public class BankDriver {
 				  					}
 				  				}else if(account.getUsername().equals(u.getUsername())){
 				  					System.out.println(account.toString());
+				  					AccountDisplay curr = account;
+				  					
 							
 				  					int select = Integer.parseInt(in.nextLine());
 				  					while(select != 5) {
@@ -141,21 +148,49 @@ public class BankDriver {
 				  						switch(select) {
 				  							case 1:{
 				  							//Withdraw
-				  								
+				  								System.out.println("How Much Would You Like To Withdraw");
+				  								int sub = Integer.parseInt(in.nextLine());
+				  								int result = curr.getBalance()-sub;
+				  								if (result < 0) {
+				  									System.out.println("You Cannot Withdraw More Than You Have");
+				  								}else {
+				  									aServ.updateAccount(curr.getCustomerId(),result);
+				  								}
 				  								break;
 				  							}
 				  							case 2:{
 				  								//Deposit
+				  								System.out.println("How Much Would You Like To Deposit");
+				  								int add = Integer.parseInt(in.nextLine());
+				  								int result = curr.getBalance()+add;
+				  								aServ.updateAccount(curr.getCustomerId(),result);
 				  								
 				  								break;
 				  							}
 				  							case 3:{
-				  								//Offer Transfer
-				  								
-				  								break;
+				  								//Create Transfer
+				  								System.out.println("To Create Transfer Press 1, To Exit Press 2");
+				  						  		int tchoice = Integer.parseInt(in.nextLine());
+				  						  		if(tchoice==1) {
+				  						  			System.out.print("What Account Number Would You Like To Transfer To?: ");
+				  						  			int recieve = Integer.parseInt(in.nextLine());
+				  						  			System.out.print("How Much Would You Like To Transfer?: ");
+				  						  			int amount = Integer.parseInt(in.nextLine());
+				  						  			if(amount > curr.getBalance()) {
+				  						  				System.out.println("You Do Not Have Enough Money For That Transaction!");
+				  						  				break;
+				  						  			}else {
+				  						  				tServ.addTransaction(curr.getAccountId(), recieve, amount);
+				  						  				System.out.println("Your Transaction With "+recieve+" For: $"+amount+", Was Created!");
+				  						  				break;
+				  						  			}
+				  						  		}else {
+				  						  			break;
+				  						  		}
+				  								//break;
 				  							}
 				  							case 4:{
-				  								//Accept Transfer
+				  								//Incoming Transfers
 				  								
 				  								break;
 				  							}
@@ -178,5 +213,16 @@ public class BankDriver {
 		System.out.println("Thank You For Choosing Bank");
 		in.close();
 	}
+	/*
+	public void withdrawAccount(AccountDisplay a) {
+		System.out.println("How Much Would You Like To Withdraw");
+		int sub = Integer.parseInt(in.nextLine());
+		int result = a.getBalance()-sub;
+		if (result < 0) {
+			System.out.println("You Cannot Withdraw More Than You Have");
+		}else {
+			aServ.updateAccount(a.getCustomerId(),result);
+		}
+	}*/
 
 }

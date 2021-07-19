@@ -1,33 +1,37 @@
 package com.bank.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.bank.models.Account;
 import com.bank.models.AccountDisplay;
+import com.bank.models.Transaction;
+import com.bank.models.TransactionDisplay;
 import com.bank.models.User;
 import com.bank.utils.ConnectionUtil;
 
-public class AccountDaoDB implements AccountDao{
-
-	private ConnectionUtil conUtil = ConnectionUtil.getConnectionUtil();
+public class TransactionDaoDB implements TransactionDao{
 	
+	private ConnectionUtil conUtil = ConnectionUtil.getConnectionUtil();
+
 	@Override
-	public void createAccount(Account a) {
+	public void createTransaction(Transaction t) {
 		try {
 			Connection con = conUtil.getConnection();
 			
 			con.setAutoCommit(false);
-			String sql = "call create_account(?,?)";
+			String sql = "call create_transaction(?,?,?)";
 			CallableStatement cs = con.prepareCall(sql);
 			
-			cs.setInt(1, a.getUserId());
-			cs.setDouble(2, a.getBalance());
+			cs.setInt(1, t.getSenderId());
+			cs.setInt(2, t.getRecieverId());
+			cs.setDouble(3, t.getAmount());
 			
 			cs.execute();
 			
@@ -40,9 +44,9 @@ public class AccountDaoDB implements AccountDao{
 	}
 
 	@Override
-	public List<AccountDisplay> getAllAccounts() {
-
-		List<AccountDisplay> aList = new ArrayList<AccountDisplay>();
+	public List<TransactionDisplay> getAllTransactions() {
+		
+		List<TransactionDisplay> tList = new ArrayList<TransactionDisplay>();
 		
 		try {
 			Connection con = conUtil.getConnection();
@@ -59,12 +63,12 @@ public class AccountDaoDB implements AccountDao{
 			ResultSet rs = (ResultSet) cs.getObject(1);
 			
 			while(rs.next()) {
-				AccountDisplay account = new AccountDisplay(rs.getString(1),rs.getInt(2),rs.getInt(3),rs.getInt(4));
-				aList.add(account);
+				TransactionDisplay transaction = new TransactionDisplay(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getDouble(6));
+				tList.add(transaction);
 			}
 			
 			con.setAutoCommit(true);
-			return aList;
+			return tList;
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -74,32 +78,32 @@ public class AccountDaoDB implements AccountDao{
 	}
 
 	@Override
-	public User getUsersAccounts(User u) {
-		List<Account> aList = new ArrayList<Account>();
+	public Account getAccountTransactions(Account a) {
+		List<Transaction> tList = new ArrayList<Transaction>();
 		
 		try {
 			Connection con = conUtil.getConnection();
 			con.setAutoCommit(false);
 			
-			String sql = "{?=call get_user_accounts(?)}";
+			String sql = "{?=call get_account_transactions(?)}";
 			
 			CallableStatement cs = con.prepareCall(sql);
 			
 			cs.registerOutParameter(1,  Types.OTHER);
-			cs.setInt(2, u.getId());
+			cs.setInt(2, a.getAccountId());
 			
 			cs.execute();
 			
 			ResultSet rs = (ResultSet) cs.getObject(1);
 			
 			while(rs.next()) {
-				Account a = new Account(rs.getInt(2),rs.getInt(3),rs.getInt(4));
-				aList.add(a);
+				Transaction t = new Transaction(rs.getInt(2),rs.getInt(3),rs.getDouble(4));
+				tList.add(t);
 			}
 			
-			u.setAccounts(aList);
+			a.setTransactions(tList);
 			con.setAutoCommit(true);
-			return u;
+			return a;
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -109,17 +113,15 @@ public class AccountDaoDB implements AccountDao{
 	}
 
 	@Override
-	public void updateAccount(int userId, double balance) {
-		
+	public void acceptTransaction(Transaction t) {
 		try {
 			Connection con = conUtil.getConnection();
 			
 			con.setAutoCommit(false);
-			String sql = "call update_account(?,?)";
+			String sql = "call accept_transaction(?)";
 			CallableStatement cs = con.prepareCall(sql);
 			
-			cs.setInt(1, userId);
-			cs.setDouble(2, balance);
+			cs.setInt(1, t.getTransactionId());
 			
 			cs.execute();
 			
@@ -128,8 +130,22 @@ public class AccountDaoDB implements AccountDao{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	
+	@Override
+	public void rejectTransaction(Transaction t) {
+		try {
+			Connection con = conUtil.getConnection();
+			String sql = "DELETE FROM account_transfer WHERE account_transfer.transfer_id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, t.getTransactionId());
+			
+			ps.execute();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 }

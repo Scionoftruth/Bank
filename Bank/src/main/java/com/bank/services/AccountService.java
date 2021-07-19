@@ -34,5 +34,9 @@ public class AccountService {
 		return aDao.getUsersAccounts(u);
 	}
 	
+	public void updateAccount(int userId, int balance) {
+		aDao.updateAccount(userId, balance);
+		Logging.logger.info("Account Was Updated");
+	}
 
 }

@@ -1,27 +1,42 @@
 package com.bank.models;
 
-public class Transaction {
+public class TransactionDisplay {
 	
+	private String usernameS;
+	private String usernameR;
 	private int transactionId;
 	private int senderId;
 	private int recieverId;
 	private double amount;
 	
-	public Transaction() {
-		
+	public TransactionDisplay() {
+		super();
 	}
-	
-	public Transaction(int transactionId, int senderId, int recieverId, double amount) {
+
+	public TransactionDisplay(String usernameS, String usernameR, int transactionId, int senderId, int recieverId, double amount) {
+		super();
+		this.usernameS = usernameS;
+		this.usernameR = usernameR;
 		this.transactionId = transactionId;
 		this.senderId = senderId;
 		this.recieverId = recieverId;
 		this.amount = amount;
 	}
+
+	public String getUsernameS() {
+		return usernameS;
+	}
+
+	public void setUsernameS(String usernameS) {
+		this.usernameS = usernameS;
+	}
 	
-	public Transaction(int senderId, int recieverId, double amount) {
-		this.senderId = senderId;
-		this.recieverId = recieverId;
-		this.amount = amount;
+	public String getUsernameR() {
+		return usernameR;
+	}
+	
+	public void setUsernameR(String usernameR) {
+		this.usernameR = usernameR;
 	}
 
 	public int getTransactionId() {
@@ -58,8 +73,8 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [transactionId=" + transactionId + ", senderId=" + senderId + ", recieverId=" + recieverId
-				+ ", amount=" + amount + "]";
+		return "TransactionDisplay [Sender_Username=" + usernameS +", Reciever_Username="+usernameR+", transactionId=" + transactionId + ", senderId="
+				+ senderId + ", recieverId=" + recieverId + ", amount=" + amount + "]";
 	}
 	
 
