@@ -16,14 +16,15 @@ public class AccountService {
 		this.aDao = a;
 	}
 	
-	public void addAccount(int customerId, int balance) {
-		Account a = new Account(customerId, balance);
+	public void addAccount(int customerId, int balance, String approved) {
+		Account a = new Account(customerId, balance, approved);
 		aDao.createAccount(a);
-		Logging.logger.info("Account was Created");
+		Logging.logger.info("Account Was Created");
 	}
 	
 	public void deleteAccount(int accountId) {
-		
+		aDao.deleteAccount(accountId);
+		Logging.logger.info("Account Was Denied");
 	}
 	
 	public List<AccountDisplay> getAllAccounts(){
@@ -34,8 +35,8 @@ public class AccountService {
 		return aDao.getUsersAccounts(u);
 	}
 	
-	public void updateAccount(int userId, int balance) {
-		aDao.updateAccount(userId, balance);
+	public void updateAccount(int userId, int balance, String approved) {
+		aDao.updateAccount(userId, balance, approved);
 		Logging.logger.info("Account Was Updated");
 	}
 

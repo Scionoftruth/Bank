@@ -9,22 +9,25 @@ public class Account {
 	private int accountId;
 	private int userId;
 	private double balance;
+	private String approved;
 	private List<Transaction> transactions;
 	
 	public Account() {
 		transactions = new ArrayList<Transaction>();
 	}
 	
-	public Account(int accountId, int userId, double balance) {
+	public Account(int accountId, int userId, double balance, String approved) {
 		this.accountId = accountId;
 		this.userId = userId;
 		this.balance=balance;
+		this.approved=approved;
 		this.transactions = new ArrayList<Transaction>();
 	}
 	
-	public Account(int userId, double balance) {
+	public Account(int userId, double balance, String approved) {
 		this.userId = userId;
 		this.balance = balance;
+		this.approved=approved;
 		this.transactions = new ArrayList<Transaction>();
 	}
 
@@ -52,6 +55,14 @@ public class Account {
 		this.balance = balance;
 	}
 
+	public String getApproved() {
+		return approved;
+	}
+	
+	public void setApproved(String approved) {
+		this.approved=approved;
+	}
+	
 	public List<Transaction> getTransactions() {
 		return transactions;
 	}
@@ -62,7 +73,10 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [accountId=" + accountId + ", userId=" + userId + ", balance=" + balance + "]";
+		return "Account [accountId=" + accountId + ", userId=" + userId + ", balance=" + balance + ", approved="
+				+ approved + ", transactions=" + transactions + "]";
 	}
+
+	
 	
 }

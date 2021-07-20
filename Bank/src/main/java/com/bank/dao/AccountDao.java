@@ -14,6 +14,8 @@ public interface AccountDao {
 	
 	public User getUsersAccounts(User u);
 	
-	public void updateAccount(int userId, double balance);
+	public void updateAccount(int userId, double balance, String approved);
+	
+	public void deleteAccount(int accountId);
 	
 }

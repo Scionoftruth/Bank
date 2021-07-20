@@ -2,6 +2,7 @@ package com.bank.dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -23,11 +24,12 @@ public class AccountDaoDB implements AccountDao{
 			Connection con = conUtil.getConnection();
 			
 			con.setAutoCommit(false);
-			String sql = "call create_account(?,?)";
+			String sql = "call create_account(?,?,?)";
 			CallableStatement cs = con.prepareCall(sql);
 			
 			cs.setInt(1, a.getUserId());
-			cs.setDouble(2, a.getBalance());
+			cs.setString(2, a.getApproved());
+			cs.setDouble(3, a.getBalance());
 			
 			cs.execute();
 			
@@ -59,7 +61,7 @@ public class AccountDaoDB implements AccountDao{
 			ResultSet rs = (ResultSet) cs.getObject(1);
 			
 			while(rs.next()) {
-				AccountDisplay account = new AccountDisplay(rs.getString(1),rs.getInt(2),rs.getInt(3),rs.getInt(4));
+				AccountDisplay account = new AccountDisplay(rs.getString(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getInt(5));
 				aList.add(account);
 			}
 			
@@ -93,7 +95,7 @@ public class AccountDaoDB implements AccountDao{
 			ResultSet rs = (ResultSet) cs.getObject(1);
 			
 			while(rs.next()) {
-				Account a = new Account(rs.getInt(2),rs.getInt(3),rs.getInt(4));
+				Account a = new Account(rs.getInt(2),rs.getInt(3),rs.getDouble(4),rs.getString(5));
 				aList.add(a);
 			}
 			
@@ -109,17 +111,18 @@ public class AccountDaoDB implements AccountDao{
 	}
 
 	@Override
-	public void updateAccount(int userId, double balance) {
+	public void updateAccount(int userId, double balance, String approved) {
 		
 		try {
 			Connection con = conUtil.getConnection();
 			
 			con.setAutoCommit(false);
-			String sql = "call update_account(?,?)";
+			String sql = "call update_account(?,?,?)";
 			CallableStatement cs = con.prepareCall(sql);
 			
 			cs.setInt(1, userId);
 			cs.setDouble(2, balance);
+			cs.setString(3, approved);
 			
 			cs.execute();
 			
@@ -129,6 +132,22 @@ public class AccountDaoDB implements AccountDao{
 			e.printStackTrace();
 		}
 
+	}
+	
+	@Override
+	public void deleteAccount(int accountId) {
+		try {
+			Connection con = conUtil.getConnection();
+			String sql = "DELETE FROM accounts WHERE accounts.account_id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, accountId);
+			
+			ps.execute();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	

@@ -15,8 +15,8 @@ public interface TransactionDao {
 	
 	public Account getAccountTransactions(Account u);
 	
-	public void acceptTransaction(Transaction t);
+	public void acceptTransaction(TransactionDisplay t);
 	
-	public void rejectTransaction(Transaction t);
+	public void rejectTransaction(TransactionDisplay t);
 
 }

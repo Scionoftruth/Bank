@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,6 +15,7 @@ import com.bank.exceptions.AccountDoesNotExistException;
 import com.bank.models.Account;
 //import com.bank.models.Account;
 import com.bank.models.AccountDisplay;
+import com.bank.models.TransactionDisplay;
 import com.bank.models.User;
 import com.bank.services.AccountService;
 import com.bank.services.TransactionService;
@@ -65,6 +70,7 @@ public class BankDriver {
 						u = uServ.signUp(first, last, username, email, password, "customer");
 						
 						System.out.println("You May Now Login With the Username: " + u.getUsername());
+						done = true;
 					}catch(Exception e) {
 						System.out.println("Sorry, We Could Not Process Your Request");
 						System.out.println("Please Try Again Later");
@@ -96,11 +102,41 @@ public class BankDriver {
 				  					break;
 				  				}
 				  				case 2:{//Approve or Reject Accounts
-				  					
+				  					System.out.println("Here Is A List Of Accounts For Approval");
+				  					List<AccountDisplay> aaccounts = aServ.getAllAccounts();
+				  					for(AccountDisplay aaccount : aaccounts) {
+				  						if(aaccount.getApproved().equals("pending")) {
+				  							System.out.println("Pending Account");
+				  							System.out.println(aaccount.toString());
+				  							System.out.println("Would You Like to Approve or Reject");
+				  							int input = Integer.parseInt(in.nextLine());
+				  							if(input==1) {
+				  								aServ.updateAccount(aaccount.getAccountId(), aaccount.getBalance(), "approved");
+				  								continue;
+				  							}else if(input==2){
+				  								aServ.deleteAccount(aaccount.getAccountId());
+				  								continue;
+				  							}else {
+				  								System.out.println("Please Choose 1 or 2");
+				  							}
+				  						}
+				  					}
 				  					break;
 				  				}
 				  				case 3:{//View Transactions Log
-				  					
+				  					try {
+				  						BufferedReader br = new BufferedReader(new FileReader("log.txt"));
+				  						for(String line = br.readLine(); line != null; line = br.readLine()) {
+				  							if(line.contains("Transaction")) {
+				  								System.out.println(line);
+				  							}
+				  						}
+				  						br.close();
+				  					}catch(FileNotFoundException e) {
+				  						e.printStackTrace();
+				  					}catch(IOException e) {
+				  						e.printStackTrace();
+				  					}
 				  					break;
 				  				}
 				  				case 4:{
@@ -122,11 +158,12 @@ public class BankDriver {
 				  				if(!account.getUsername().contains(u.getUsername())) {
 				  					System.out.println("It Seems Like You Do Not Have An Account With Us");
 				  					System.out.println("To Create An Account Press 1, To Exit Press 2");
+				  					choice = Integer.parseInt(in.nextLine());
 				  					if(choice==1) {
 				  						System.out.println("Thank You "+ u.getUsername()+" For Creating An Account");
 				  						System.out.print("What Would Your Starting Balance Be: ");
 				  						int balance = Integer.parseInt(in.nextLine());
-				  						aServ.addAccount(u.getId(), balance);
+				  						aServ.addAccount(u.getId(), balance, "pending");
 				  						System.out.println("Congratulations "+u.getUsername()+" Your Account Was Created!");
 				  						System.out.println("Are You Finished? Press 1 for Yes, Press 2 for No");
 				  						choice = Integer.parseInt(in.nextLine());
@@ -150,11 +187,14 @@ public class BankDriver {
 				  							//Withdraw
 				  								System.out.println("How Much Would You Like To Withdraw");
 				  								int sub = Integer.parseInt(in.nextLine());
+				  								if(sub < 0) {
+				  									System.out.println("You Cannont Withdraw A Negative Amount");
+				  								}
 				  								int result = curr.getBalance()-sub;
 				  								if (result < 0) {
 				  									System.out.println("You Cannot Withdraw More Than You Have");
 				  								}else {
-				  									aServ.updateAccount(curr.getCustomerId(),result);
+				  									aServ.updateAccount(curr.getCustomerId(),result,curr.getApproved());
 				  								}
 				  								break;
 				  							}
@@ -162,8 +202,11 @@ public class BankDriver {
 				  								//Deposit
 				  								System.out.println("How Much Would You Like To Deposit");
 				  								int add = Integer.parseInt(in.nextLine());
+				  								if(add < 0) {
+				  									System.out.println("You Cannont Deposit A Negative Amount");
+				  								}
 				  								int result = curr.getBalance()+add;
-				  								aServ.updateAccount(curr.getCustomerId(),result);
+				  								aServ.updateAccount(curr.getCustomerId(),result,curr.getApproved());
 				  								
 				  								break;
 				  							}
@@ -175,7 +218,7 @@ public class BankDriver {
 				  						  			System.out.print("What Account Number Would You Like To Transfer To?: ");
 				  						  			int recieve = Integer.parseInt(in.nextLine());
 				  						  			System.out.print("How Much Would You Like To Transfer?: ");
-				  						  			int amount = Integer.parseInt(in.nextLine());
+				  						  			double amount = Integer.parseInt(in.nextLine());
 				  						  			if(amount > curr.getBalance()) {
 				  						  				System.out.println("You Do Not Have Enough Money For That Transaction!");
 				  						  				break;
@@ -191,8 +234,28 @@ public class BankDriver {
 				  							}
 				  							case 4:{
 				  								//Incoming Transfers
-				  								
-				  								break;
+				  								System.out.println("Printing Pending Transactions");
+				  								List<TransactionDisplay> trans = tServ.getAllTransactions();
+				  								for(TransactionDisplay tran: trans) {
+				  									if(tran.getRecieverId()==curr.getAccountId()) {
+				  										System.out.println("Current Transaction");
+				  										System.out.println(tran.toString());
+				  										System.out.println("Press 1 to Accept or 2 To Reject");
+				  										int pchoice = Integer.parseInt(in.nextLine());
+				  										if(pchoice==1) {
+				  											tServ.acceptTransaction(tran);
+				  											System.out.println("Transaction Accepted");
+				  											continue;
+				  										}else {
+				  											tServ.rejectTransaction(tran);
+				  											System.out.println("Transaction Rejected");
+				  											continue;
+				  										}
+				  									}else {
+				  										System.out.println("You Have No Pending Transactions");
+				  										break;
+				  									}
+				  								}
 				  							}
 				  							case 5:{
 				  								done=true;
@@ -206,7 +269,9 @@ public class BankDriver {
 				  					}
 				  				}
 				  			}
-				  		}	
+				  		}else {
+				  			done=true;
+				  		}
 				  }
 			}
 		}

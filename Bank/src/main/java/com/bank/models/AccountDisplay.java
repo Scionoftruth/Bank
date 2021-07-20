@@ -5,17 +5,19 @@ public class AccountDisplay{
 	private String username;
 	private int accountId;
 	private int customerId;
+	private String approved;
 	private int balance;
 	
 	public AccountDisplay() {
 		super();
 	}
 
-	public AccountDisplay(String username, int accountId, int customerId, int balance) {
+	public AccountDisplay(String username, int accountId, int customerId, String approved, int balance) {
 		super();
 		this.username = username;
 		this.accountId = accountId;
 		this.customerId = customerId;
+		this.approved = approved;
 		this.balance = balance;
 	}
 
@@ -42,7 +44,15 @@ public class AccountDisplay{
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
+	
+	public String getApproved() {
+		return approved;
+	}
 
+	public void setApproved(String approved) {
+		this.approved=approved;
+	}
+	
 	public int getBalance() {
 		return balance;
 	}

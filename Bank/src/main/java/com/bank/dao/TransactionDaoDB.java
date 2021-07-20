@@ -113,7 +113,7 @@ public class TransactionDaoDB implements TransactionDao{
 	}
 
 	@Override
-	public void acceptTransaction(Transaction t) {
+	public void acceptTransaction(TransactionDisplay t) {
 		try {
 			Connection con = conUtil.getConnection();
 			
@@ -133,7 +133,7 @@ public class TransactionDaoDB implements TransactionDao{
 	}
 
 	@Override
-	public void rejectTransaction(Transaction t) {
+	public void rejectTransaction(TransactionDisplay t) {
 		try {
 			Connection con = conUtil.getConnection();
 			String sql = "DELETE FROM account_transfer WHERE account_transfer.transfer_id = ?";
