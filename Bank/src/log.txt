@@ -108,3 +108,5 @@
 2021-07-21 10:19:30 WARN  Logging:54 - User Tried to Login With Invalid Credentials
 2021-07-21 10:25:32 INFO  Logging:57 - User Was Logged In
 2021-07-21 10:26:04 INFO  Logging:40 - Account Was Updated
+2021-07-21 16:21:22 INFO  Logging:57 - User Was Logged In
+2021-07-21 16:21:45 INFO  Logging:40 - Account Was Updated
