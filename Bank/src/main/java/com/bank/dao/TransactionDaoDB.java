@@ -31,7 +31,7 @@ public class TransactionDaoDB implements TransactionDao{
 			
 			cs.setInt(1, t.getSenderId());
 			cs.setInt(2, t.getRecieverId());
-			cs.setDouble(3, t.getAmount());
+			cs.setInt(3, t.getAmount());
 			
 			cs.execute();
 			
@@ -97,7 +97,7 @@ public class TransactionDaoDB implements TransactionDao{
 			ResultSet rs = (ResultSet) cs.getObject(1);
 			
 			while(rs.next()) {
-				Transaction t = new Transaction(rs.getInt(2),rs.getInt(3),rs.getDouble(4));
+				Transaction t = new Transaction(rs.getInt(2),rs.getInt(3),rs.getInt(4));
 				tList.add(t);
 			}
 			

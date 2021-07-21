@@ -28,8 +28,8 @@ public class AccountDaoDB implements AccountDao{
 			CallableStatement cs = con.prepareCall(sql);
 			
 			cs.setInt(1, a.getUserId());
-			cs.setString(2, a.getApproved());
-			cs.setDouble(3, a.getBalance());
+			cs.setInt(2, a.getBalance());
+			cs.setString(3, a.getApproved());
 			
 			cs.execute();
 			
@@ -61,7 +61,7 @@ public class AccountDaoDB implements AccountDao{
 			ResultSet rs = (ResultSet) cs.getObject(1);
 			
 			while(rs.next()) {
-				AccountDisplay account = new AccountDisplay(rs.getString(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getInt(5));
+				AccountDisplay account = new AccountDisplay(rs.getString(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5));
 				aList.add(account);
 			}
 			
@@ -95,7 +95,7 @@ public class AccountDaoDB implements AccountDao{
 			ResultSet rs = (ResultSet) cs.getObject(1);
 			
 			while(rs.next()) {
-				Account a = new Account(rs.getInt(2),rs.getInt(3),rs.getDouble(4),rs.getString(5));
+				Account a = new Account(rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5));
 				aList.add(a);
 			}
 			
@@ -111,17 +111,41 @@ public class AccountDaoDB implements AccountDao{
 	}
 
 	@Override
-	public void updateAccount(int userId, double balance, String approved) {
+	public void updateAccountBal(int userId, int balance, String approved) {
 		
 		try {
 			Connection con = conUtil.getConnection();
 			
 			con.setAutoCommit(false);
-			String sql = "call update_account(?,?,?)";
+			String sql = "call update_account_bal(?,?,?)";
 			CallableStatement cs = con.prepareCall(sql);
 			
 			cs.setInt(1, userId);
-			cs.setDouble(2, balance);
+			cs.setInt(2, balance);
+			cs.setString(3, approved);
+			
+			cs.execute();
+			
+			con.setAutoCommit(true);
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Override
+	public void updateAccountApproval(int userId, int balance, String approved) {
+		
+		try {
+			Connection con = conUtil.getConnection();
+			
+			con.setAutoCommit(false);
+			String sql = "call update_account_approval(?,?,?)";
+			CallableStatement cs = con.prepareCall(sql);
+			
+			cs.setInt(1, userId);
+			cs.setInt(2, balance);
 			cs.setString(3, approved);
 			
 			cs.execute();

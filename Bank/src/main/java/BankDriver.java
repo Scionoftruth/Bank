@@ -41,34 +41,34 @@ public class BankDriver {
 		while(!done) {
 			if(u==null) {
 				System.out.println("Welcome To The Bank");
-				System.out.println("Login or Signup? Press 1 to Login");
+				System.out.println("Login or Signup? Press 1 to Login, Press 2 to Signup");
 				int choice = Integer.parseInt(in.nextLine());
 				if(choice == 1) {
-					System.out.println("Please Enter Your Username: ");
+					System.out.print("Please Enter Your Username: ");
 					String username = in.nextLine();
-					System.out.println("Please Enter Your Password: ");
+					System.out.print("Please Enter Your Password: ");
 					String password = in.nextLine();
 					try {
 						u = uServ.signIn(username, password);
+						System.out.println(u.getUsername()+" You Are Now Logged In");
 					}catch(Exception e) {
 						System.out.println("Username or Password Was Incorrect. Goodbye");
 						done = true;
 					}
-				}else {
-					System.out.print("Please Enter Your First Name");
+				}else{
+					System.out.print("Please Enter Your First Name: ");
 					String first = in.nextLine();
-					System.out.print("Please Enter Your Last Name");
+					System.out.print("Please Enter Your Last Name: ");
 					String last = in.nextLine();
-					System.out.print("Please Enter Your Username");
+					System.out.print("Please Enter Your Username: ");
 					String username = in.nextLine();
-					System.out.print("Please Enter Your Email");
+					System.out.print("Please Enter Your Email: ");
 					String email = in.nextLine();
-					System.out.print("Please Enter a Password");
+					System.out.print("Please Enter a Password: ");
 					String password = in.nextLine();
 					//AccessLevel access = CUSTOMER;
 					try {
 						u = uServ.signUp(first, last, username, email, password, "customer");
-						
 						System.out.println("You May Now Login With the Username: " + u.getUsername());
 						done = true;
 					}catch(Exception e) {
@@ -79,13 +79,14 @@ public class BankDriver {
 				}
 			}else{
 				 if(u.getAccess().equals("employee")){
-				 		int eselect = Integer.parseInt(in.nextLine());		
+				 		int eselect = 0;		
 				 		while(eselect!=4){
 				  			System.out.println("Please Select an Option");
 				  			System.out.println("1: View Customer Account");
 				  			System.out.println("2: Approve or Reject");
 				  			System.out.println("3: View Transactions Log");
 				  			System.out.println("4: Logout");
+				  			eselect=Integer.parseInt(in.nextLine());
 				  			switch(eselect){
 				  				case 1:{//Lookup Customer Account
 				  					System.out.println("Please Enter Customer Username");
@@ -109,9 +110,14 @@ public class BankDriver {
 				  							System.out.println("Pending Account");
 				  							System.out.println(aaccount.toString());
 				  							System.out.println("Would You Like to Approve or Reject");
+				  							System.out.println("Press 1 To Approve or 2 To Reject");
 				  							int input = Integer.parseInt(in.nextLine());
 				  							if(input==1) {
-				  								aServ.updateAccount(aaccount.getAccountId(), aaccount.getBalance(), "approved");
+				  								aaccount.setApproved("approved");
+				  								System.out.println(aaccount.getAccountId());
+				  								System.out.println(aaccount.getBalance());
+				  								System.out.println(aaccount.getApproved());
+				  								aServ.updateAccountApproval(aaccount.getAccountId(), aaccount.getBalance(), aaccount.getApproved());
 				  								continue;
 				  							}else if(input==2){
 				  								aServ.deleteAccount(aaccount.getAccountId());
@@ -151,30 +157,34 @@ public class BankDriver {
 				 		}
 				  }else{
 				  		System.out.println("To View Account Press 1, To Exit Press 2");
-				  		int choice = Integer.parseInt(in.nextLine());
-				  		if(choice==1){
+				  		int achoice = Integer.parseInt(in.nextLine());
+				  		//System.out.println(u.getUsername());
+				  		//System.out.println(aServ.getAllAccounts());
+				  		if(achoice==1){
 				  			List<AccountDisplay> accounts = aServ.getAllAccounts();
 				  			for(AccountDisplay account: accounts) {
 				  				if(!account.getUsername().contains(u.getUsername())) {
 				  					System.out.println("It Seems Like You Do Not Have An Account With Us");
 				  					System.out.println("To Create An Account Press 1, To Exit Press 2");
-				  					choice = Integer.parseInt(in.nextLine());
-				  					if(choice==1) {
+				  					achoice = Integer.parseInt(in.nextLine());
+				  					if(achoice==1) {
 				  						System.out.println("Thank You "+ u.getUsername()+" For Creating An Account");
 				  						System.out.print("What Would Your Starting Balance Be: ");
 				  						int balance = Integer.parseInt(in.nextLine());
 				  						aServ.addAccount(u.getId(), balance, "pending");
 				  						System.out.println("Congratulations "+u.getUsername()+" Your Account Was Created!");
 				  						System.out.println("Are You Finished? Press 1 for Yes, Press 2 for No");
-				  						choice = Integer.parseInt(in.nextLine());
-				  						done = (choice == 1) ? true : false;
+				  						achoice = Integer.parseInt(in.nextLine());
+				  						done = (achoice == 1) ? true : false;
+				  					}else if(achoice==2) {
+				  						done = true;
 				  					}
 				  				}else if(account.getUsername().equals(u.getUsername())){
 				  					System.out.println(account.toString());
 				  					AccountDisplay curr = account;
-				  					
-							
-				  					int select = Integer.parseInt(in.nextLine());
+				  					//System.out.println(curr.toString());
+				  					if(curr.getApproved().equals("approved")) {
+				  					int select = 0;
 				  					while(select != 5) {
 				  						System.out.println("Select One Of The Following");
 				  						System.out.println("1: Withdraw From Account");
@@ -182,6 +192,7 @@ public class BankDriver {
 				  						System.out.println("3. Transfer To Another Account");
 				  						System.out.println("4. Accept Incoming Transfer");
 				  						System.out.println("5. Quit Current Session");
+				  						select = Integer.parseInt(in.nextLine());
 				  						switch(select) {
 				  							case 1:{
 				  							//Withdraw
@@ -194,8 +205,9 @@ public class BankDriver {
 				  								if (result < 0) {
 				  									System.out.println("You Cannot Withdraw More Than You Have");
 				  								}else {
-				  									aServ.updateAccount(curr.getCustomerId(),result,curr.getApproved());
+				  									aServ.updateAccountBal(curr.getCustomerId(),result,curr.getApproved());
 				  								}
+				  								System.out.println(curr.toString());
 				  								break;
 				  							}
 				  							case 2:{
@@ -206,8 +218,8 @@ public class BankDriver {
 				  									System.out.println("You Cannont Deposit A Negative Amount");
 				  								}
 				  								int result = curr.getBalance()+add;
-				  								aServ.updateAccount(curr.getCustomerId(),result,curr.getApproved());
-				  								
+				  								aServ.updateAccountBal(curr.getCustomerId(),result,curr.getApproved());
+				  								System.out.println(curr.toString());
 				  								break;
 				  							}
 				  							case 3:{
@@ -218,13 +230,14 @@ public class BankDriver {
 				  						  			System.out.print("What Account Number Would You Like To Transfer To?: ");
 				  						  			int recieve = Integer.parseInt(in.nextLine());
 				  						  			System.out.print("How Much Would You Like To Transfer?: ");
-				  						  			double amount = Integer.parseInt(in.nextLine());
+				  						  			int amount = Integer.parseInt(in.nextLine());
 				  						  			if(amount > curr.getBalance()) {
 				  						  				System.out.println("You Do Not Have Enough Money For That Transaction!");
 				  						  				break;
 				  						  			}else {
 				  						  				tServ.addTransaction(curr.getAccountId(), recieve, amount);
 				  						  				System.out.println("Your Transaction With "+recieve+" For: $"+amount+", Was Created!");
+				  						  				System.out.println(curr.toString());
 				  						  				break;
 				  						  			}
 				  						  		}else {
@@ -245,10 +258,12 @@ public class BankDriver {
 				  										if(pchoice==1) {
 				  											tServ.acceptTransaction(tran);
 				  											System.out.println("Transaction Accepted");
+				  											System.out.println(curr.toString());
 				  											continue;
 				  										}else {
 				  											tServ.rejectTransaction(tran);
 				  											System.out.println("Transaction Rejected");
+				  											System.out.println(curr.toString());
 				  											continue;
 				  										}
 				  									}else {
@@ -266,6 +281,10 @@ public class BankDriver {
 				  								break;
 				  							}
 				  						}
+				  					}
+				  				}else{
+				  					System.out.println("Please Wait For Your Account To Be Approved By An Employee");
+				  					done=true;
 				  					}
 				  				}
 				  			}

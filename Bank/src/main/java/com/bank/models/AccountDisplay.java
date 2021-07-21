@@ -5,14 +5,14 @@ public class AccountDisplay{
 	private String username;
 	private int accountId;
 	private int customerId;
-	private String approved;
 	private int balance;
+	private String approved;
 	
 	public AccountDisplay() {
 		super();
 	}
 
-	public AccountDisplay(String username, int accountId, int customerId, String approved, int balance) {
+	public AccountDisplay(String username, int accountId, int customerId,  int balance, String approved) {
 		super();
 		this.username = username;
 		this.accountId = accountId;
@@ -60,5 +60,13 @@ public class AccountDisplay{
 	public void setBalance(int balance) {
 		this.balance = balance;
 	}
+
+	@Override
+	public String toString() {
+		return "AccountDisplay [Username=" + username + ", AccountId=" + accountId + ", CustomerId=" + customerId
+				+ ", Balance=$" + balance + ", Approved=" + approved + "]";
+	}
+
+
 	
 }

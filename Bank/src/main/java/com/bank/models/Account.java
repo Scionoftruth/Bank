@@ -8,7 +8,7 @@ public class Account {
 	//private String accountnum;
 	private int accountId;
 	private int userId;
-	private double balance;
+	private int balance;
 	private String approved;
 	private List<Transaction> transactions;
 	
@@ -16,7 +16,7 @@ public class Account {
 		transactions = new ArrayList<Transaction>();
 	}
 	
-	public Account(int accountId, int userId, double balance, String approved) {
+	public Account(int accountId, int userId, int balance, String approved) {
 		this.accountId = accountId;
 		this.userId = userId;
 		this.balance=balance;
@@ -24,7 +24,7 @@ public class Account {
 		this.transactions = new ArrayList<Transaction>();
 	}
 	
-	public Account(int userId, double balance, String approved) {
+	public Account(int userId, int balance, String approved) {
 		this.userId = userId;
 		this.balance = balance;
 		this.approved=approved;
@@ -47,7 +47,7 @@ public class Account {
 		this.userId = userId;
 	}
 
-	public double getBalance() {
+	public int getBalance() {
 		return balance;
 	}
 

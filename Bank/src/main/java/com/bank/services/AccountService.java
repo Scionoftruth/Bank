@@ -35,8 +35,13 @@ public class AccountService {
 		return aDao.getUsersAccounts(u);
 	}
 	
-	public void updateAccount(int userId, int balance, String approved) {
-		aDao.updateAccount(userId, balance, approved);
+	public void updateAccountBal(int userId, int balance, String approved) {
+		aDao.updateAccountBal(userId, balance, approved);
+		Logging.logger.info("Account Was Updated");
+	}
+	
+	public void updateAccountApproval(int userId, int balance, String approved) {
+		aDao.updateAccountApproval(userId, balance, approved);
 		Logging.logger.info("Account Was Updated");
 	}
 

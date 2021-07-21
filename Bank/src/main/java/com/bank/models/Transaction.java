@@ -5,20 +5,20 @@ public class Transaction {
 	private int transactionId;
 	private int senderId;
 	private int recieverId;
-	private double amount;
+	private int amount;
 	
 	public Transaction() {
 		
 	}
 	
-	public Transaction(int transactionId, int senderId, int recieverId, double amount) {
+	public Transaction(int transactionId, int senderId, int recieverId, int amount) {
 		this.transactionId = transactionId;
 		this.senderId = senderId;
 		this.recieverId = recieverId;
 		this.amount = amount;
 	}
 	
-	public Transaction(int senderId, int recieverId, double amount) {
+	public Transaction(int senderId, int recieverId, int amount) {
 		this.senderId = senderId;
 		this.recieverId = recieverId;
 		this.amount = amount;
@@ -48,11 +48,11 @@ public class Transaction {
 		this.recieverId = recieverId;
 	}
 
-	public double getAmount() {
+	public int getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 

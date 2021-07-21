@@ -17,7 +17,7 @@ public class TransactionService {
 	}
 	
 	
-	public void addTransaction(int senderId, int recieverId, double amount) {
+	public void addTransaction(int senderId, int recieverId, int amount) {
 		Transaction t = new Transaction(senderId, recieverId, amount);
 		tDao.createTransaction(t);
 		Logging.logger.info("Transaction was Created");

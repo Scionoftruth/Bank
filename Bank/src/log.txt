@@ -7,3 +7,72 @@
 2021-07-15 16:56:51 INFO  Logging:22 - Account was Created
 2021-07-15 17:00:15 INFO  Logging:57 - User Was Logged In
 2021-07-15 17:00:45 INFO  Logging:57 - User Was Logged In
+2021-07-20 16:49:38 INFO  Logging:30 - New user has registered
+2021-07-20 16:51:48 INFO  Logging:57 - User Was Logged In
+2021-07-20 16:53:46 INFO  Logging:57 - User Was Logged In
+2021-07-20 16:56:44 INFO  Logging:57 - User Was Logged In
+2021-07-20 17:10:47 INFO  Logging:30 - New user has registered
+2021-07-20 17:13:39 WARN  Logging:51 - Account Does Not Exist
+2021-07-20 17:14:18 INFO  Logging:57 - User Was Logged In
+2021-07-20 17:15:33 INFO  Logging:57 - User Was Logged In
+2021-07-20 17:16:13 INFO  Logging:57 - User Was Logged In
+2021-07-20 17:18:45 INFO  Logging:57 - User Was Logged In
+2021-07-20 17:40:56 WARN  Logging:51 - Account Does Not Exist
+2021-07-20 17:41:19 INFO  Logging:57 - User Was Logged In
+2021-07-20 17:41:51 INFO  Logging:57 - User Was Logged In
+2021-07-21 00:12:51 INFO  Logging:57 - User Was Logged In
+2021-07-21 00:13:12 INFO  Logging:22 - Account Was Created
+2021-07-21 00:15:12 INFO  Logging:57 - User Was Logged In
+2021-07-21 00:15:24 INFO  Logging:22 - Account Was Created
+2021-07-21 00:15:57 INFO  Logging:57 - User Was Logged In
+2021-07-21 00:16:07 INFO  Logging:22 - Account Was Created
+2021-07-21 00:30:28 INFO  Logging:57 - User Was Logged In
+2021-07-21 00:31:16 INFO  Logging:22 - Account Was Created
+2021-07-21 00:38:06 WARN  Logging:54 - User Tried to Login With Invalid Credentials
+2021-07-21 00:38:19 INFO  Logging:57 - User Was Logged In
+2021-07-21 00:38:29 INFO  Logging:22 - Account Was Created
+2021-07-21 00:41:14 INFO  Logging:57 - User Was Logged In
+2021-07-21 00:41:19 INFO  Logging:22 - Account Was Created
+2021-07-21 00:51:09 INFO  Logging:57 - User Was Logged In
+2021-07-21 00:51:16 INFO  Logging:22 - Account Was Created
+2021-07-21 01:05:48 INFO  Logging:57 - User Was Logged In
+2021-07-21 01:06:25 INFO  Logging:22 - Account Was Created
+2021-07-21 01:13:05 INFO  Logging:57 - User Was Logged In
+2021-07-21 01:13:11 INFO  Logging:22 - Account Was Created
+2021-07-21 01:20:00 INFO  Logging:57 - User Was Logged In
+2021-07-21 01:21:14 INFO  Logging:40 - Account Was Updated
+2021-07-21 01:25:01 INFO  Logging:57 - User Was Logged In
+2021-07-21 01:25:35 INFO  Logging:57 - User Was Logged In
+2021-07-21 01:32:23 INFO  Logging:57 - User Was Logged In
+2021-07-21 01:33:02 INFO  Logging:40 - Account Was Updated
+2021-07-21 01:45:51 INFO  Logging:57 - User Was Logged In
+2021-07-21 01:48:05 INFO  Logging:57 - User Was Logged In
+2021-07-21 01:49:32 INFO  Logging:57 - User Was Logged In
+2021-07-21 01:52:17 INFO  Logging:57 - User Was Logged In
+2021-07-21 01:53:39 INFO  Logging:40 - Account Was Updated
+2021-07-21 01:55:48 INFO  Logging:27 - Account Was Denied
+2021-07-21 02:10:03 INFO  Logging:57 - User Was Logged In
+2021-07-21 02:10:49 INFO  Logging:57 - User Was Logged In
+2021-07-21 02:12:35 INFO  Logging:57 - User Was Logged In
+2021-07-21 02:13:29 INFO  Logging:57 - User Was Logged In
+2021-07-21 02:29:19 INFO  Logging:57 - User Was Logged In
+2021-07-21 06:03:00 INFO  Logging:57 - User Was Logged In
+2021-07-21 06:04:00 INFO  Logging:57 - User Was Logged In
+2021-07-21 06:04:09 INFO  Logging:22 - Account Was Created
+2021-07-21 06:04:58 INFO  Logging:57 - User Was Logged In
+2021-07-21 06:05:06 INFO  Logging:40 - Account Was Updated
+2021-07-21 06:05:22 INFO  Logging:57 - User Was Logged In
+2021-07-21 06:05:44 INFO  Logging:57 - User Was Logged In
+2021-07-21 06:13:38 INFO  Logging:57 - User Was Logged In
+2021-07-21 06:13:56 INFO  Logging:40 - Account Was Updated
+2021-07-21 06:17:26 INFO  Logging:40 - Account Was Updated
+2021-07-21 06:32:17 INFO  Logging:57 - User Was Logged In
+2021-07-21 06:32:25 INFO  Logging:45 - Account Was Updated
+2021-07-21 06:36:01 INFO  Logging:57 - User Was Logged In
+2021-07-21 06:36:05 INFO  Logging:45 - Account Was Updated
+2021-07-21 06:40:00 INFO  Logging:57 - User Was Logged In
+2021-07-21 06:40:11 INFO  Logging:45 - Account Was Updated
+2021-07-21 06:49:22 INFO  Logging:57 - User Was Logged In
+2021-07-21 06:50:24 WARN  Logging:51 - Account Does Not Exist
+2021-07-21 06:50:37 INFO  Logging:57 - User Was Logged In
+2021-07-21 07:07:12 INFO  Logging:57 - User Was Logged In
