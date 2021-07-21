@@ -52,7 +52,7 @@ public class TransactionDaoDB implements TransactionDao{
 			Connection con = conUtil.getConnection();
 			con.setAutoCommit(false);
 			
-			String sql = "{?=call get_all_accounts()}";
+			String sql = "{?=call get_all_transactions()}";
 			
 			CallableStatement cs = con.prepareCall(sql);
 			
@@ -63,7 +63,7 @@ public class TransactionDaoDB implements TransactionDao{
 			ResultSet rs = (ResultSet) cs.getObject(1);
 			
 			while(rs.next()) {
-				TransactionDisplay transaction = new TransactionDisplay(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getDouble(6));
+				TransactionDisplay transaction = new TransactionDisplay(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
 				tList.add(transaction);
 			}
 			

@@ -34,6 +34,8 @@ public class BankDriver {
 
 	public static void main(String[] args) {
 		
+		
+		
 		boolean done = false;
 		
 		User u = null;
@@ -131,7 +133,7 @@ public class BankDriver {
 				  				}
 				  				case 3:{//View Transactions Log
 				  					try {
-				  						BufferedReader br = new BufferedReader(new FileReader("log.txt"));
+				  						BufferedReader br = new BufferedReader(new FileReader("src/log.txt"));
 				  						for(String line = br.readLine(); line != null; line = br.readLine()) {
 				  							if(line.contains("Transaction")) {
 				  								System.out.println(line);

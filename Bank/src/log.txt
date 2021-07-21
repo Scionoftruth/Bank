@@ -76,3 +76,10 @@
 2021-07-21 06:50:24 WARN  Logging:51 - Account Does Not Exist
 2021-07-21 06:50:37 INFO  Logging:57 - User Was Logged In
 2021-07-21 07:07:12 INFO  Logging:57 - User Was Logged In
+2021-07-21 07:29:11 INFO  Logging:57 - User Was Logged In
+2021-07-21 07:58:37 INFO  Logging:30 - New user has registered
+2021-07-21 08:01:37 INFO  Logging:57 - User Was Logged In
+2021-07-21 08:02:20 INFO  Logging:23 - Transaction was Created
+2021-07-21 08:03:16 INFO  Logging:57 - User Was Logged In
+2021-07-21 08:05:51 INFO  Logging:57 - User Was Logged In
+2021-07-21 08:08:28 INFO  Logging:57 - User Was Logged In
