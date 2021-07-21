@@ -64,7 +64,7 @@ public class AccountDisplay{
 	@Override
 	public String toString() {
 		return "AccountDisplay [Username=" + username + ", AccountId=" + accountId + ", CustomerId=" + customerId
-				+ ", Balance=$" + balance + ", Approved=" + approved + "]";
+				+ ", Balance=$" + balance + "]";
 	}
 
 

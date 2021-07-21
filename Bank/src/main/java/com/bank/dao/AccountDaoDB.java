@@ -111,13 +111,13 @@ public class AccountDaoDB implements AccountDao{
 	}
 
 	@Override
-	public void updateAccountBal(int userId, int balance, String approved) {
+	public void updateAccount(int userId, int balance, String approved) {
 		
 		try {
 			Connection con = conUtil.getConnection();
 			
 			con.setAutoCommit(false);
-			String sql = "call update_account_bal(?,?,?)";
+			String sql = "call update_account(?,?,?)";
 			CallableStatement cs = con.prepareCall(sql);
 			
 			cs.setInt(1, userId);

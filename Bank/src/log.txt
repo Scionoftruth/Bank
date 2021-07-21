@@ -83,3 +83,28 @@
 2021-07-21 08:03:16 INFO  Logging:57 - User Was Logged In
 2021-07-21 08:05:51 INFO  Logging:57 - User Was Logged In
 2021-07-21 08:08:28 INFO  Logging:57 - User Was Logged In
+2021-07-21 09:57:57 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:00:17 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:00:57 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:01:52 INFO  Logging:23 - Transaction was Created
+2021-07-21 10:04:39 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:05:52 INFO  Logging:23 - Transaction was Created
+2021-07-21 10:07:19 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:11:47 INFO  Logging:30 - New user has registered
+2021-07-21 10:12:04 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:12:16 INFO  Logging:22 - Account Was Created
+2021-07-21 10:12:54 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:13:19 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:13:54 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:14:00 INFO  Logging:45 - Account Was Updated
+2021-07-21 10:14:12 INFO  Logging:27 - Account Was Denied
+2021-07-21 10:14:34 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:14:49 INFO  Logging:40 - Account Was Updated
+2021-07-21 10:15:23 INFO  Logging:23 - Transaction was Created
+2021-07-21 10:15:56 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:16:03 INFO  Logging:40 - Account Was Updated
+2021-07-21 10:16:33 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:19:17 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:19:30 WARN  Logging:54 - User Tried to Login With Invalid Credentials
+2021-07-21 10:25:32 INFO  Logging:57 - User Was Logged In
+2021-07-21 10:26:04 INFO  Logging:40 - Account Was Updated

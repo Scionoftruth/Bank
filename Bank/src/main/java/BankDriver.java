@@ -207,7 +207,7 @@ public class BankDriver {
 				  								if (result < 0) {
 				  									System.out.println("You Cannot Withdraw More Than You Have");
 				  								}else {
-				  									aServ.updateAccountBal(curr.getCustomerId(),result,curr.getApproved());
+				  									aServ.updateAccount(curr.getCustomerId(),result,curr.getApproved());
 				  								}
 				  								System.out.println(curr.toString());
 				  								break;
@@ -220,7 +220,7 @@ public class BankDriver {
 				  									System.out.println("You Cannont Deposit A Negative Amount");
 				  								}
 				  								int result = curr.getBalance()+add;
-				  								aServ.updateAccountBal(curr.getCustomerId(),result,curr.getApproved());
+				  								aServ.updateAccount(curr.getCustomerId(),result,curr.getApproved());
 				  								System.out.println(curr.toString());
 				  								break;
 				  							}
