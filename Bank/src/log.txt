@@ -110,3 +110,129 @@
 2021-07-21 10:26:04 INFO  Logging:40 - Account Was Updated
 2021-07-21 16:21:22 INFO  Logging:57 - User Was Logged In
 2021-07-21 16:21:45 INFO  Logging:40 - Account Was Updated
+2021-07-22 11:40:02 INFO  Logging:57 - User Was Logged In
+2021-07-22 11:42:15 INFO  Logging:57 - User Was Logged In
+2021-07-22 11:49:47 INFO  Logging:40 - Account Was Updated
+2021-07-22 11:49:56 INFO  Logging:40 - Account Was Updated
+2021-07-22 11:50:10 INFO  Logging:23 - Transaction was Created
+2021-07-22 12:51:01 INFO  Logging:57 - User Was Logged In
+2021-07-22 13:00:13 INFO  Logging:57 - User Was Logged In
+2021-07-22 13:45:34 INFO  Logging:57 - User Was Logged In
+2021-07-22 13:45:43 INFO  Logging:22 - Account Was Created
+2021-07-22 13:46:21 INFO  Logging:57 - User Was Logged In
+2021-07-22 13:50:36 INFO  Logging:57 - User Was Logged In
+2021-07-22 13:50:45 INFO  Logging:45 - Account Was Updated
+2021-07-22 13:54:54 INFO  Logging:57 - User Was Logged In
+2021-07-22 13:55:20 INFO  Logging:45 - Account Was Updated
+2021-07-22 14:02:04 INFO  Logging:57 - User Was Logged In
+2021-07-22 14:03:58 INFO  Logging:57 - User Was Logged In
+2021-07-22 14:07:50 INFO  Logging:57 - User Was Logged In
+2021-07-22 14:11:09 INFO  Logging:57 - User Was Logged In
+2021-07-22 14:17:27 INFO  Logging:57 - User Was Logged In
+2021-07-22 14:26:19 INFO  Logging:57 - User Was Logged In
+2021-07-22 14:30:38 INFO  Logging:57 - User Was Logged In
+2021-07-22 14:30:50 INFO  Logging:28 - Transaction: 2 was Accepted
+2021-07-22 14:34:08 INFO  Logging:57 - User Was Logged In
+2021-07-22 14:34:23 INFO  Logging:28 - Transaction: 2 was Accepted
+2021-07-22 14:38:12 INFO  Logging:57 - User Was Logged In
+2021-07-22 14:38:18 INFO  Logging:28 - Transaction: 2 was Accepted
+2021-07-22 14:43:18 INFO  Logging:57 - User Was Logged In
+2021-07-22 14:43:33 INFO  Logging:28 - Transaction: 2 was Accepted
+2021-07-22 14:45:11 INFO  Logging:57 - User Was Logged In
+2021-07-22 14:45:16 INFO  Logging:28 - Transaction: 2 was Accepted
+2021-07-24 19:29:03 INFO  Logging:57 - User Was Logged In
+2021-07-24 19:29:10 INFO  Logging:40 - Account Was Updated
+2021-07-24 19:29:16 INFO  Logging:40 - Account Was Updated
+2021-07-24 19:29:45 INFO  Logging:33 - Transaction: 2 was Rejected
+2021-07-24 19:29:58 INFO  Logging:28 - Transaction: 3 was Accepted
+2021-07-24 19:30:26 INFO  Logging:28 - Transaction: 4 was Accepted
+2021-07-24 19:35:42 INFO  Logging:57 - User Was Logged In
+2021-07-24 19:39:46 INFO  Logging:57 - User Was Logged In
+2021-07-24 19:43:35 INFO  Logging:57 - User Was Logged In
+2021-07-24 19:44:47 INFO  Logging:57 - User Was Logged In
+2021-07-24 19:56:31 INFO  Logging:57 - User Was Logged In
+2021-07-24 19:56:52 INFO  Logging:57 - User Was Logged In
+2021-07-24 19:57:45 INFO  Logging:57 - User Was Logged In
+2021-07-24 19:58:29 INFO  Logging:57 - User Was Logged In
+2021-07-24 20:00:09 INFO  Logging:45 - Account Was Updated
+2021-07-24 20:17:20 INFO  Logging:57 - User Was Logged In
+2021-07-24 20:17:26 INFO  Logging:45 - Account Was Updated
+2021-07-24 20:21:25 INFO  Logging:57 - User Was Logged In
+2021-07-24 20:21:30 INFO  Logging:45 - Account Was Updated
+2021-07-24 20:30:30 INFO  Logging:57 - User Was Logged In
+2021-07-25 14:07:29 INFO  Logging:57 - User Was Logged In
+2021-07-25 14:07:47 INFO  Logging:22 - Account Was Created
+2021-07-25 15:10:43 INFO  Logging:57 - User Was Logged In
+2021-07-25 15:11:30 INFO  Logging:57 - User Was Logged In
+2021-07-25 15:13:09 INFO  Logging:57 - User Was Logged In
+2021-07-25 15:13:23 INFO  Logging:28 - Transaction: 3 was Accepted
+2021-07-25 15:13:36 INFO  Logging:28 - Transaction: 4 was Accepted
+2021-07-25 16:20:58 INFO  Logging:57 - User Was Logged In
+2021-07-25 16:22:25 INFO  Logging:23 - Transaction was Created
+2021-07-25 16:22:41 INFO  Logging:57 - User Was Logged In
+2021-07-25 16:26:49 INFO  Logging:57 - User Was Logged In
+2021-07-25 16:27:16 INFO  Logging:28 - Transaction: 5 was Accepted
+2021-07-25 16:30:05 INFO  Logging:57 - User Was Logged In
+2021-07-25 16:31:49 INFO  Logging:23 - Transaction was Created
+2021-07-25 16:34:37 INFO  Logging:57 - User Was Logged In
+2021-07-25 16:35:05 INFO  Logging:23 - Transaction was Created
+2021-07-25 16:35:17 INFO  Logging:28 - Transaction: 6 was Accepted
+2021-07-25 16:35:35 INFO  Logging:57 - User Was Logged In
+2021-07-25 16:36:05 INFO  Logging:28 - Transaction: 7 was Accepted
+2021-07-25 16:40:53 INFO  Logging:57 - User Was Logged In
+2021-07-25 16:41:55 INFO  Logging:23 - Transaction was Created
+2021-07-25 16:43:15 INFO  Logging:57 - User Was Logged In
+2021-07-25 16:43:37 INFO  Logging:28 - Transaction: 8 was Accepted
+2021-07-25 17:00:17 INFO  Logging:30 - New user has registered
+2021-07-25 17:00:43 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:00:56 INFO  Logging:22 - Account Was Created
+2021-07-25 17:05:14 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:06:48 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:08:15 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:08:55 INFO  Logging:30 - New user has registered
+2021-07-25 17:09:29 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:09:38 INFO  Logging:22 - Account Was Created
+2021-07-25 17:17:07 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:17:25 INFO  Logging:45 - Account Was Updated
+2021-07-25 17:18:53 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:20:06 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:21:15 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:22:13 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:23:07 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:24:04 INFO  Logging:40 - Account Was Updated
+2021-07-25 17:24:09 INFO  Logging:40 - Account Was Updated
+2021-07-25 17:35:42 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:35:48 INFO  Logging:27 - Account Was Denied
+2021-07-25 17:36:08 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:37:25 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:38:04 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:39:08 INFO  Logging:57 - User Was Logged In
+2021-07-25 17:39:16 INFO  Logging:22 - Account Was Created
+2021-07-25 17:39:52 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:04:20 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:09:21 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:10:22 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:11:38 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:12:29 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:13:48 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:14:52 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:15:06 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:19:04 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:19:47 INFO  Logging:30 - New user has registered
+2021-07-25 18:20:10 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:20:17 INFO  Logging:22 - Account Was Created
+2021-07-25 18:20:50 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:23:33 WARN  Logging:51 - Account Does Not Exist
+2021-07-25 18:24:05 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:25:18 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:25:30 INFO  Logging:45 - Account Was Updated
+2021-07-25 18:25:35 INFO  Logging:45 - Account Was Updated
+2021-07-25 18:25:41 INFO  Logging:45 - Account Was Updated
+2021-07-25 18:55:21 INFO  Logging:57 - User Was Logged In
+2021-07-25 18:55:28 INFO  Logging:40 - Account Was Updated
+2021-07-25 18:55:33 INFO  Logging:40 - Account Was Updated
+2021-07-26 10:08:07 INFO  Logging:30 - New user has registered
+2021-07-26 10:08:28 INFO  Logging:57 - User Was Logged In
+2021-07-26 10:08:37 INFO  Logging:22 - Account Was Created
+2021-07-26 10:08:53 INFO  Logging:57 - User Was Logged In
+2021-07-26 10:08:59 INFO  Logging:45 - Account Was Updated

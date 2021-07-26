@@ -18,5 +18,7 @@ public interface TransactionDao {
 	public void acceptTransaction(TransactionDisplay t);
 	
 	public void rejectTransaction(TransactionDisplay t);
+	
+	public int checkPending(TransactionDisplay t);
 
 }

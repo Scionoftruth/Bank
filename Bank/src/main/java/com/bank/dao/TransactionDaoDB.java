@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Types;
 
 import com.bank.models.Account;
@@ -63,7 +64,7 @@ public class TransactionDaoDB implements TransactionDao{
 			ResultSet rs = (ResultSet) cs.getObject(1);
 			
 			while(rs.next()) {
-				TransactionDisplay transaction = new TransactionDisplay(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
+				TransactionDisplay transaction = new TransactionDisplay(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4));
 				tList.add(transaction);
 			}
 			
@@ -130,6 +131,24 @@ public class TransactionDaoDB implements TransactionDao{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public int checkPending(TransactionDisplay t) {
+		try {
+			Connection con = conUtil.getConnection();
+			
+			String sql = "SELECT SUM(amount) FROM account_transfer WHERE account_transfer.sender_id = " + t.getSenderId();
+			
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			
+			return rs.getInt(0);
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	@Override

@@ -63,8 +63,8 @@ public class AccountDisplay{
 
 	@Override
 	public String toString() {
-		return "AccountDisplay [Username=" + username + ", AccountId=" + accountId + ", CustomerId=" + customerId
-				+ ", Balance=$" + balance + "]";
+		return "Username: " + username + "\n" + "AccountId: " + accountId + "\n" + "CustomerId: " + customerId
+				+ "\n" + "Balance: $" + balance + "\n";
 	}
 
 
